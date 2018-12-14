@@ -9,7 +9,11 @@ using namespace std;
 
 Player::Player()
 {
-
+	Response response = Response();
+	setResponse1(response);
+	setResponse2(response);
+	setResponse3(response);
+	setResponse4(response);
 }
 
 Player::Player(Response choice1, Response choice2, Response choice3, Response choice4)

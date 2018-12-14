@@ -25,6 +25,9 @@ void Opponent::generateResponses()
 	winText = "You make a strong argument. I'll take it!";
 }
 
+string Opponent::getName() {
+	return name;
+}
 //set the response
 void Opponent::setResponse(Response response) {
 	this->response = response;

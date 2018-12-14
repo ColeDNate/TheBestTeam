@@ -20,6 +20,7 @@ public:
 	void setName(string name);
 	void generateResponses();
 	void setResponse(Response response);
+	string getName();
 	Response getResponse();
 	string getIntro();
 	string getLoss();

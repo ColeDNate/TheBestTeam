@@ -8,37 +8,63 @@
 using namespace std;
 
 Scene::Scene(){
-
+	player = Player();
+	opponent = Opponent();
+	playerDialogue = vector<Response>();
+	opponentDialogue = vector<Response>();
 }
 
 
 Scene::Scene(Player player, Opponent opponent, vector<Response> playerDialogue, vector<Response> opponentDialogue){
 	this->player = player;
 	this->opponent = opponent;
-	this->playerDialogue = playerDialogue;
-	this->opponentDialogue = opponentDialogue;
+
+	for (int i = 0; i < playerDialogue.size(); i++) {
+		this->playerDialogue.push_back(playerDialogue.at(i));
+	}
+	for (int i = 0; i < opponentDialogue.size(); i++) {
+		this->opponentDialogue.push_back(opponentDialogue.at(i));
+	}
 }
 
 int Scene::runScene() {
+	int dialogueSize;
 	int score = 5;
 	bool moveSuccess = true;
 
-	cout << opponent.getIntro();
+	cout << opponent.getIntro() << "\n\n";
 	do {
 		cout << opponent.getResponse().getText();
 		//change player dialogue
 		changePlayerDialogue();
 		//change the opponent's response
-		opponent.setResponse(opponentDialogue.at(rand() % opponentDialogue.size()));
+		dialogueSize = opponentDialogue.size();
+		opponent.setResponse(opponentDialogue.at(rand() % dialogueSize));
 		
-		cout << opponent.getResponse().getText();
+		//display opponent guage and dialogue
+		cout << opponent.getName() << "|";
+		for (int i = 0; i < 10; i++) {
+			if (i < score) {
+				cout << "+";
+			}
+			if (i == score) {
+				cout << "0";
+			}
+			else if (i > score){
+				cout << "-";
+			}
+		}
+		cout << "|\n";
+		cout<< opponent.getResponse().getText();
 		
 		moveSuccess = makePlay(opponent.getResponse());
 
 		if (moveSuccess == true) {
+			cout << "\n\n" << "That was a favorable response!\n\n\n";
 			score++;
 		}
 		else {
+			cout << "\n\n" << "That was a poor response.\n\n\n";
 			score--;
 		}
 
@@ -58,13 +84,14 @@ bool Scene::makePlay(Response respondTo) {
 	string playerChoice;
 	bool success = false;
 
-	cout << "        How will you respond?\n";
+	cout << "\n        How will you respond?\n";
 	cout << "  ------------------------------------------\n";
-	cout << " |(1)" << player.getResponse1().getText() << endl;
-	cout << " |(2)" << player.getResponse2().getText() << endl;
-	cout << " |(3)" << player.getResponse3().getText() << endl;
-	cout << " |(4)" << player.getResponse4().getText() << endl;
+	cout << " |(1) " << player.getResponse1().getText() << endl;
+	cout << " |(2) " << player.getResponse2().getText() << endl;
+	cout << " |(3) " << player.getResponse3().getText() << endl;
+	cout << " |(4) " << player.getResponse4().getText() << endl;
 	cout << "  ------------------------------------------ \n";
+	cout << "Your selection: ";
 
 	do
 	{
@@ -91,26 +118,30 @@ bool Scene::makePlay(Response respondTo) {
 		}
 		else {
 			cout << "INVALID CHOICE";
+			playerChoice = "5";
 			success = false;
 		}
-	} while (playerChoice != "5");
+	} while (playerChoice == "5");
 
 	return success;
 }
 
 
 void Scene::changePlayerDialogue() {
+	int size;
 	int random;
-	int selection1 = -1;
-	int selection2 = -1;
-	int selection3 = -1;
-	int selection4 = -1;
+	int selection1 = 1;
+	int selection2 = 1;
+	int selection3 = 1;
+	int selection4 = 1;
 	bool notFilled = true;
 
-	selection2 = rand() % playerDialogue.size();
+	size = playerDialogue.size();
+
+	selection1 = rand() % size;
 
 	do {
-		random = rand() % playerDialogue.size();
+		random = rand() % size;
 		if (random != selection1) {
 			selection2 = random;
 			notFilled = false;
@@ -119,7 +150,7 @@ void Scene::changePlayerDialogue() {
 
 	notFilled = true;
 	do {
-		random = rand() % playerDialogue.size();
+		random = rand() % size;
 		if (random != selection1 &&
 			random != selection2) {
 			selection3 = random;
@@ -129,7 +160,7 @@ void Scene::changePlayerDialogue() {
 
 	notFilled = true;
 	do {
-		random = rand() % playerDialogue.size();
+		random = rand() % size;
 		if (random != selection1 &&
 			random != selection2 &&
 			random != selection3) {

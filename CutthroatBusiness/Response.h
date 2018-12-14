@@ -10,7 +10,7 @@ class Response
 {
 public:
 	/*** ENUMERATION ***/
-	enum Type { Angry, Afraid, Aprehensive, Skeptical, Bored, Overwhelmed, Trusting };
+	enum Type { Angry, Afraid, Aprehensive, Skeptical, Bored, Overwhelmed, Trusting, Sad };
 
 
 private:

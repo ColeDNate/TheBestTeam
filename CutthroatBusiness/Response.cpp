@@ -8,6 +8,7 @@ using namespace std;
 
 Response::Response(){
 	setType(Response::Type::Angry);
+	setText("Apathy");
 }
 
 Response::Response(Type type, string text){
