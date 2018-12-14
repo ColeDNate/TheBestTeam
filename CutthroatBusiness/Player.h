@@ -20,8 +20,12 @@ public:
 	Player();
 	Player(Response choice1, Response choice2, Response choice3, Response choice4);
 	void setResponse1(Response response);
+	Response getResponse1();
 	void setResponse2(Response response);
+	Response getResponse2();
 	void setResponse3(Response response);
+	Response getResponse3();
 	void setResponse4(Response response);
+	Response getResponse4();
 };
 

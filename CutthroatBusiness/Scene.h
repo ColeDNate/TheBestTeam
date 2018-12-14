@@ -4,6 +4,7 @@
 #include "Opponent.h"
 #include "Player.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -12,11 +13,13 @@ class Scene
 private:
 	Opponent opponent;
 	Player player;
-	Response *playerDialogue;
-	Response *opponentDialogue;
+	vector <Response> playerDialogue;
+	vector <Response> opponentDialogue;
 public:
 	Scene();
-	Scene(Player player, Opponent opponent, Response playerDialouge[], Response opponentDialouge[]);
-	void runScene();
+	Scene(Player player, Opponent opponent, vector<Response> playerDialouge, vector<Response> opponentDialouge);
+	int runScene();
+	void makeSelection();
+	void changePlayerDialogue();
 };
 

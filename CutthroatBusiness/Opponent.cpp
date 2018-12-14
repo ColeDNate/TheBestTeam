@@ -44,6 +44,9 @@ string Opponent::getProgress()
 void Opponent::setResponse(Response response) {
 	this->response = response;
 }
+Response Opponent::getResponse() {
+	return response;
+}
 
 void Opponent::setName(string newname) {
 	name = newname;

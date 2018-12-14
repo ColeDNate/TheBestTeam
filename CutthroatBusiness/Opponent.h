@@ -21,6 +21,7 @@ public:
 	void setName(string name);
 	void generateResponses();
 	void setResponse(Response response);
+	Response getResponse();
 	string getProgress();
 	string getIntro();
 	string getLoss();
