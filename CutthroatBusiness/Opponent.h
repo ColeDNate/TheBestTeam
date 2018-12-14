@@ -11,7 +11,6 @@ class Opponent
 private:
 	string name;
 	Response response;
-	int progress;
 	string introText;
 	string lossText;
 	string winText;
@@ -22,7 +21,6 @@ public:
 	void generateResponses();
 	void setResponse(Response response);
 	Response getResponse();
-	string getProgress();
 	string getIntro();
 	string getLoss();
 	string getWin();

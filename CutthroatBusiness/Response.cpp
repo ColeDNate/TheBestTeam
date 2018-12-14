@@ -28,3 +28,12 @@ void Response::setType(Type type) {
 Response::Type Response::getType() {
 	return type;
 }
+
+bool Response::compareOtherType(Response other) {
+	if (type == other.getType()) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}

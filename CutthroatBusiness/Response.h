@@ -8,8 +8,9 @@ using namespace std;
 
 class Response
 {
+public:
 	/*** ENUMERATION ***/
-	enum Type {Angry, Afraid, Aprehensive, Skeptical, Bored, Overwhelmed, Trusting};
+	enum Type { Angry, Afraid, Aprehensive, Skeptical, Bored, Overwhelmed, Trusting };
 
 
 private:
@@ -18,6 +19,7 @@ private:
 	Type type;
 
 public:
+
 	//constructors
 	Response();
 	Response(Type type, string text);
@@ -26,4 +28,5 @@ public:
 	string getText();
 	void setType(Type newType);
 	Type getType();
+	bool compareOtherType(Response other);
 };

@@ -70,22 +70,22 @@ bool Scene::makePlay(Response respondTo) {
 	{
 		cin >> playerChoice;
 		if (playerChoice == "1"){
-			if (player.getResponse1().getType == respondTo.getType()) {
+			if (player.getResponse1().compareOtherType(respondTo)) {
 				success = true;
 			}
 		}
 		else if (playerChoice == "2"){
-			if (player.getResponse2().getType == respondTo.getType()) {
+			if (player.getResponse2().compareOtherType(respondTo)) {
 				success = true;
 			}
 		}
 		else if (playerChoice == "3"){
-			if (player.getResponse3().getType == respondTo.getType()) {
+			if (player.getResponse3().compareOtherType(respondTo)) {
 				success = true;
 			}
 		}
 		else if (playerChoice == "4"){
-			if (player.getResponse4().getType == respondTo.getType()) {
+			if (player.getResponse4().compareOtherType(respondTo)) {
 				success = true;
 			}
 		}

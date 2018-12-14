@@ -7,7 +7,6 @@ using namespace std;
 Opponent::Opponent()
 {
 	setName("John Doe");
-	progress = 5;
 	generateResponses();
 }
 Opponent::Opponent(string name)
@@ -24,20 +23,6 @@ void Opponent::generateResponses()
 	introText = "What's this about a product?";
 	lossText = "I've had it! Take your con elsewhere, swindler!";
 	winText = "You make a strong argument. I'll take it!";
-}
-//get progress
-string Opponent::getProgress()
-{
-	string returnText = "LOSS|";
-	for (int i = 0; i <= 10; i++)
-	{
-		if (i == progress)
-			returnText += "O";
-		else
-			returnText += "-";
-	}
-	returnText += "|WIN\n";
-	return returnText;
 }
 
 //set the response
