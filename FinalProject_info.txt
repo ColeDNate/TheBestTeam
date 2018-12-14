@@ -1,0 +1,34 @@
+Final Group Name: Team The Best Team (The Best Team Ever!!)
+Group Git: https://github.com/ColeDNate/TheBestTeam 
+Group members:
+ - David N. Cole
+	Code, primary object and class organization
+ - Matt Saucedo
+	Code, supplementary organization of psudocode & diagram
+
+
+output introduction message to user
+loop for main menu
+   output directions to choose Start or Quit
+   Input user choice
+   if Start choice
+      runs scene()
+   else if Quit choice
+      exits loop
+   else Invalid choice
+      repeats loop
+   execute Scene function runScene()
+      set int score to 5
+score is incremented up or down based on whether the correct response was chosen by the player, and determines a win or loss by reaching 10 or 0 respectively
+      output opponent’s introductory line
+      loop for conversation
+         output opponent’s response
+         change player dialogue
+         output menu for player’s response options
+         take input choice from player
+         adjust score based on response
+         change the opponent’s response
+         modify the score based on the score value in the new response’s class
+         if score reaches 0 or lower, print a defeat message and end the loop
+         else if score reaches 10 or higher, print a victory message and end the loop
+         else output the new response’s text and return to the top of the loop
