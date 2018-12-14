@@ -90,7 +90,6 @@ bool Scene::makePlay(Response respondTo) {
 			}
 		}
 		else {
-			playerChoice = "5";
 			cout << "INVALID CHOICE";
 			success = false;
 		}
