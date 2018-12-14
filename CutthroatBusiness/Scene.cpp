@@ -21,10 +21,26 @@ Scene::Scene(Player player, Opponent opponent, vector<Response> playerDialogue, 
 
 int Scene::runScene() {
 	int score = 5;
+	bool moveSuccess = true;
 
 	cout << opponent.getIntro();
 	do {
 		cout << opponent.getResponse().getText();
+		//change player dialogue
+		changePlayerDialogue();
+		//change the opponent's response
+		opponent.setResponse(opponentDialogue.at(rand() % opponentDialogue.size()));
+		
+		cout << opponent.getResponse().getText();
+		
+		moveSuccess = makePlay(opponent.getResponse());
+
+		if (moveSuccess == true) {
+			score++;
+		}
+		else {
+			score--;
+		}
 
 	} while (score > 0 && score < 10);
 
@@ -38,14 +54,49 @@ int Scene::runScene() {
 	}
 }
 
-void Scene::makeSelection() {
-	cout << "Make your selection\n";
+bool Scene::makePlay(Response respondTo) {
+	string playerChoice;
+	bool success = false;
+
+	cout << "        How will you respond?\n";
 	cout << "  ------------------------------------------\n";
 	cout << " |(1)" << player.getResponse1().getText() << endl;
 	cout << " |(2)" << player.getResponse2().getText() << endl;
 	cout << " |(3)" << player.getResponse3().getText() << endl;
 	cout << " |(4)" << player.getResponse4().getText() << endl;
 	cout << "  ------------------------------------------ \n";
+
+	do
+	{
+		cin >> playerChoice;
+		if (playerChoice == "1"){
+			if (player.getResponse1().getType == respondTo.getType()) {
+				success = true;
+			}
+		}
+		else if (playerChoice == "2"){
+			if (player.getResponse2().getType == respondTo.getType()) {
+				success = true;
+			}
+		}
+		else if (playerChoice == "3"){
+			if (player.getResponse3().getType == respondTo.getType()) {
+				success = true;
+			}
+		}
+		else if (playerChoice == "4"){
+			if (player.getResponse4().getType == respondTo.getType()) {
+				success = true;
+			}
+		}
+		else {
+			playerChoice = "5";
+			cout << "INVALID CHOICE";
+			success = false;
+		}
+	} while (playerChoice != "5");
+
+	return success;
 }
 
 
@@ -88,7 +139,7 @@ void Scene::changePlayerDialogue() {
 		}
 	} while (notFilled);
 
-	player = new Player(playerDialogue.at(selection1), playerDialogue.at(selection2), 
+	player = Player(playerDialogue.at(selection1), playerDialogue.at(selection2), 
 						playerDialogue.at(selection3), playerDialogue.at(selection4));
 
 }

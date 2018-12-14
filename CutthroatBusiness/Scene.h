@@ -19,7 +19,7 @@ public:
 	Scene();
 	Scene(Player player, Opponent opponent, vector<Response> playerDialouge, vector<Response> opponentDialouge);
 	int runScene();
-	void makeSelection();
+	bool makePlay(Response respondTo);
 	void changePlayerDialogue();
 };
 
